@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
+    <title>Login</title>
+</head>
+<body>
+    This is rendered by flask server<br><br><br><br>
+    username : <input id="username" type="text"/><br>
+    password : <input id="password" type="text"/><br>
+    <button id="login-btn" value="Login" >Login</button>
+    <script>
+                 $("#login-btn").click(function () {
+                        $.ajax({
+                            url: "http://0.0.0.0:3651/userLogin/"+ $("#username").val() + "/" $("#password").val(),
+                            method: "GET",
+                            <!--success: function (msg) {-->
+                                <!--alert("Thank you for your feedback!");-->
+                            <!--},-->
+                            error: function (request, status, errorThrown) {
+                                alert("There was an error in processing the request. Please retry!")
+                            }
+                        });
+                });
+    </script>
+</body>
+</html>
